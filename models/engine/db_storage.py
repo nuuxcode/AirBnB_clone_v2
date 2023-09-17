@@ -67,12 +67,7 @@ class DBStorage:
 
     def save(self):
         """commit all changes"""
-        try:
-            self.__session.commit()
-            return True
-        #except (IntegrityError, OperationalError):
-        except Exception:
-            return False
+        self.__session.commit()
 
     def delete(self, obj=None):
         """delete from the current database session"""
