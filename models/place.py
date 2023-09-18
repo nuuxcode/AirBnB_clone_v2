@@ -3,8 +3,8 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, ForeignKey, Float, Table
 from sqlalchemy.orm import relationship
-from os import getenv
 from models.amenity import Amenity
+from os import getenv
 
 storage_type = getenv("HBNB_TYPE_STORAGE")
 
@@ -61,13 +61,13 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            from models import storage
             """Getter"""
+            from models import storage
             amenitiesList = []
             amenitiesAll = storage.all(Amenity)
-            for k, v in amenitiesAll.items():
-                if v.id in self.amenity_ids:
-                    amenitiesList.append(v)
+            for amenity in amenitiesAll.values():
+                if amenity.id in self.amenity_ids:
+                    amenitiesList.append(amenity)
             return amenitiesList
 
         @amenities.setter
