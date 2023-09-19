@@ -168,7 +168,6 @@ class HBNBCommand(cmd.Cmd):
                 and value[len(value) - 1] == '"':
             value = value[1:-1]
             value = value.replace("_", " ")
-            print(value)
         else:
             try:
                 if "." in value:
