@@ -1,14 +1,12 @@
 #!/usr/bin/python3
-"""doc doc
-"""
+""" Module doc"""
 import unittest
+import console
 
 
-class TestConsole(unittest.TestCase):
-    """doc doc
-    """
+class test_Console(unittest.TestCase):
+    """doc doc"""
 
-    def test(self):
-        """doc doc
-        """
-        pass
+    def test_documentation(self):
+        """doc doc"""
+        self.assertIsNotNone(console.__doc__)

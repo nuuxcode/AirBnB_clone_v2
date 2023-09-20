@@ -1,16 +1,18 @@
 #!/usr/bin/python3
-""" doc doc """
-import unittest
+"""document document"""
+
+from models.engine.db_storage import DBStorage
 import os
+import unittest
 
 
 @unittest.skipIf(
     os.getenv("HBNB_TYPE_STORAGE") != "db",
-    "Test is not relevant for db storage"
+    "Test is not relevant for DBStorage"
 )
-class test_DBStorage(unittest.TestCase):
-    """doc doc"""
+class test_DB_Storage(unittest.TestCase):
+    """document document"""
 
-    def test(self):
-        """doc doc"""
-        pass
+    def test_documentation(self):
+        """document document"""
+        self.assertIsNot(DBStorage.__doc__, None)
