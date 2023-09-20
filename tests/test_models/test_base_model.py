@@ -80,9 +80,9 @@ class test_basemodel(unittest.TestCase):
 
     def test_kwargs_one(self):
         """document documt"""
-        n = {"Name": "nuux"}
+        n = {"name": "nuux"}
         new = self.value(**n)
-        self.assertEqual(new.Name, n["Name"])
+        self.assertEqual(new.Name, n["name"])
 
     def test_id(self):
         """document documt"""
