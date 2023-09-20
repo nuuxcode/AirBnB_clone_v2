@@ -28,7 +28,7 @@ class test_basemodel(unittest.TestCase):
     def tearDown(self):
         try:
             os.remove("file.json")
-        except Exception:
+        except:
             pass
 
     def test_default(self):
@@ -82,7 +82,7 @@ class test_basemodel(unittest.TestCase):
         """document documt"""
         n = {"name": "nuux"}
         new = self.value(**n)
-        self.assertEqual(new.Name, n["name"])
+        self.assertEqual(new.name, n["name"])
 
     def test_id(self):
         """document documt"""
@@ -100,4 +100,5 @@ class test_basemodel(unittest.TestCase):
         self.assertEqual(type(new.updated_at), datetime.datetime)
         n = new.to_dict()
         new = BaseModel(**n)
+        new.save()
         self.assertFalse(new.created_at == new.updated_at)
