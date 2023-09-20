@@ -14,7 +14,7 @@ class State(BaseModel, Base):
 
     __tablename__ = 'states'
     if storage_type == "db":
-        name = Column(String(128), nullable=False, unique=True)
+        name = Column(String(128), nullable=False)
         cities = relationship('City', cascade="all,delete", backref="state")
     else:
         name = ""
