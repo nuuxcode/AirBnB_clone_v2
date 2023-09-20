@@ -10,7 +10,7 @@ import os
     os.getenv("HBNB_TYPE_STORAGE") == "db",
     "Test is not relevant for fileStorage"
 )
-class test_fileStorage(unittest.TestCase):
+class test_file_Storage(unittest.TestCase):
     """Class to test the file storage method"""
 
     def setUp(self):

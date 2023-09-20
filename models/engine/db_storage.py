@@ -9,7 +9,6 @@ from models.review import Review
 from models.base_model import Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from sqlalchemy.exc import IntegrityError, OperationalError
 from os import getenv
 
 
