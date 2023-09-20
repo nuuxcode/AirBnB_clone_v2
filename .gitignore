@@ -1,3 +1,4 @@
+__pycache__/
 file.json
 tests/__pycache__/
 tests/test_models/__pycache__/
