@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # sets up your web servers for the deployment of web_static
 
+trap 'exit 0' ERR
+
 if ! command -v nginx &> /dev/null; then
     sudo apt update
     sudo apt install nginx -y
@@ -32,4 +34,3 @@ sudo sed -i "/^server {/a \ \tadd_header X-Served-By $HOSTNAME;" $config
 sudo sed -i '/^server {/a \ \n\tlocation \/hbnb_static {alias /data/web_static/current/;index index.html;}' $config
 
 sudo service nginx restart
-trap 'exit 0' ERR
