@@ -10,4 +10,7 @@ def do_pack():
     """
     formatted_dt = datetime.now().strftime('%Y%m%d%H%M%S')
     print(f"Packing web_static to versions/web_static_{formatted_dt}.tgz")
-    local(f"mkdir -p versions && tar -cvzf versions/web_static_{formatted_dt}.tgz web_static")
+    try:
+        local(f"mkdir -p versions && tar -cvzf versions/web_static_{formatted_dt}.tgz web_static")
+    except Exception:
+        return None
