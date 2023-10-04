@@ -36,13 +36,13 @@ def do_deploy(archive_path):
         mkdir_result = run(f"mkdir -p {dpath}{fn_no_ext}/")
         tar_result = run(f"tar -xzf /tmp/{fn_with_ext} -C {dpath}{fn_no_ext}/")
         rm_tmp_result = run(f"rm /tmp/{fn_with_ext}")
-        mv_result = run(f"mv {dpath}{fn_no_ext}/web_static/* {dpath}{fn_no_ext}/")
+        mv_r = run(f"mv {dpath}{fn_no_ext}/web_static/* {dpath}{fn_no_ext}/")
         rm_web_static_result = run(f"rm -rf {dpath}{fn_no_ext}/web_static")
         rm_current_result = run(f"rm -rf /data/web_static/current")
         ln_result = run(f"ln -s {dpath}{fn_no_ext}/ /data/web_static/current")
         if (
             put_result.failed or rm_result.failed or mkdir_result.failed or
-            tar_result.failed or rm_tmp_result.failed or mv_result.failed or
+            tar_result.failed or rm_tmp_result.failed or mv_r.failed or
             rm_web_static_result.failed or rm_current_result.failed or
             ln_result.failed
         ):
