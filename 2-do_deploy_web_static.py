@@ -23,7 +23,9 @@ def do_pack():
 @task
 def do_deploy(archive_path):
     """ method doc
-        sudo fab -f 1-pack_web_static.py do_pack
+        fab -f 2-do_deploy_web_static.py do_deploy:
+        archive_path=versions/web_static_20231004201306.tgz
+        -i ~/.ssh/id_rsa -u ubuntu
     """
     if os.path.exists(archive_path):
         fn_with_ext = os.path.basename(archive_path)
@@ -32,6 +34,7 @@ def do_deploy(archive_path):
         private_key = env.key_filename
         username = env.user
         put(archive_path, "/tmp/")
+        run(f"rm -rf {dpath}{fn_no_ext}/")
         run(f"mkdir -p {dpath}{fn_no_ext}/")
         run(f"tar -xzf /tmp/{fn_with_ext} -C {dpath}{fn_no_ext}/")
         run(f"rm /tmp/{fn_with_ext}")
