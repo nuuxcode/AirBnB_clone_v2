@@ -5,6 +5,7 @@ from fabric.api import task, local, env, put, run
 from datetime import datetime
 import os
 
+env.hosts = ['18.207.1.87', '52.206.189.175']
 
 @task
 def do_pack():
@@ -24,11 +25,9 @@ def do_deploy(archive_path):
         sudo fab -f 1-pack_web_static.py do_pack
     """
     if os.path.exists(archive_path):
-        print(f"[{env.host}] Executing task 'do_deploy'")
         fn_with_ext = os.path.basename(archive_path)
         fn_no_ext, ext = os.path.splitext(fn_with_ext)
         dpath = "/data/web_static/releases/"
-        env.hosts = ['18.207.1.87', '52.206.189.175']
         private_key = env.key_filename
         username = env.user
         put(archive_path, "/tmp/")
