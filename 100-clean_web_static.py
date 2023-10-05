@@ -74,7 +74,7 @@ def do_clean(number=0):
     """ method doc
         sudo fab -f 1-pack_web_static.py do_pack
     """
-    if number == 0:
+    if int(number) == 0:
         number = 1
     number = int(number) + 1
     remove_local(number)
