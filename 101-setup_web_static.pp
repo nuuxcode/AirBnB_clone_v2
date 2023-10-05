@@ -24,7 +24,7 @@ exec { 'update':
 -> file_line { 'location_hbnb_static':
   path     => '/etc/nginx/sites-available/default',
   match    => '^server {',
-  line     => 'server {\n\tlocation /hbnb_static {alias /data/web_static/current/;index index.html;}',
+  line     => "server {\n\tlocation /hbnb_static {alias /data/web_static/current/;index index.html;}",
   multiple => false,
 }
 -> exec { 'run6':
