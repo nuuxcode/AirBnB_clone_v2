@@ -1,7 +1,6 @@
 # instal and configure nginx
-exec { 'update':
-  command     => '/usr/bin/apt-get update',
-  onlyif      => '/usr/bin/which nginx',
+exec {'update':
+  command => '/usr/bin/apt-get update',
 }
 -> package { 'nginx':
   ensure => installed,
@@ -21,11 +20,9 @@ exec { 'update':
 -> exec { 'run5':
   command => '/usr/bin/chown -R ubuntu:ubuntu /data/',
 }
--> file_line { 'location_hbnb_static':
-  path     => '/etc/nginx/sites-available/default',
-  match    => '^server {',
-  line     => "server {\n\tlocation /hbnb_static {alias /data/web_static/current/;index index.html;}",
-  multiple => false,
+-> exec { 'hbnb_static':
+  command => 'sudo sed -i "/^server {/a \ \n\tlocation \/hbnb_static {alias /data/web_static/current/;index index.html;}" /etc/nginx/sites-enabled/default',
+  provider => shell,
 }
 -> exec { 'run6':
   command => '/usr/sbin/service nginx restart',
