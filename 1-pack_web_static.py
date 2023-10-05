@@ -14,4 +14,6 @@ def do_pack():
     mkdir = "mkdir -p versions"
     path = f"versions/web_static_{formatted_dt}.tgz"
     print(f"Packing web_static to versions/web_static_{formatted_dt}.tgz")
-    local(f"{mkdir}&& tar -cvzf {path} web_static")
+    if local(f"{mkdir}&& tar -cvzf {path} web_static").succeeded:
+        return path
+    return None
