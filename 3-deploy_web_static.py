@@ -50,12 +50,13 @@ def do_deploy(archive_path):
 @task
 @runs_once
 def deploy():
+    """ method doc
+        sudo fab -f 1-pack_web_static.py do_pack
+    """
     path = do_pack()
     if path is None:
         return False
-
     for host in env.hosts:
         env.host_string = host
         do_deploy(path)
-
     return True
