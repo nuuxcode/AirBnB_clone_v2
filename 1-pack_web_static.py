@@ -12,8 +12,8 @@ def do_pack():
     """
     formatted_dt = datetime.now().strftime('%Y%m%d%H%M%S')
     mkdir = "mkdir -p versions"
-    path = f"versions/web_static_{formatted_dt}.tgz"
-    print(f"Packing web_static to versions/web_static_{formatted_dt}.tgz")
-    if local(f"{mkdir}&& tar -cvzf {path} web_static").succeeded:
+    path = "versions/web_static_{}.tgz".format(formatted_dt)
+    print("Packing web_static to {}".format(path))
+    if local("{} && tar -cvzf {} web_static".format(mkdir, path)).succeeded:
         return path
     return None
