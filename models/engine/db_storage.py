@@ -73,3 +73,7 @@ class DBStorage:
         """delete from the current database session"""
         if obj:
             self.__session.delete(obj)
+
+    def close(self):
+        """doc meth"""
+        self.__session.close()
