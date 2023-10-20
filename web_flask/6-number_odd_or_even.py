@@ -41,10 +41,10 @@ def number(n):
 def number_odd_or_even(n):
     """ def doc """
     if n % 2 == 0:
-        parity = 'even'
+        p = 'even'
     else:
-        parity = 'odd'
-    return render_template('6-number_odd_or_even.html', number=n, parity=parity)
+        p = 'odd'
+    return render_template('6-number_odd_or_even.html', number=n, parity=p)
 
 
 if __name__ == "__main__":
