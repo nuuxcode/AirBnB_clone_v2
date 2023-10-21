@@ -52,7 +52,7 @@ def number_odd_or_even(n):
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """ def doc """
-    states=storage.all(State)
+    states = storage.all(State)
     return render_template('7-states_list.html', states=states)
 
 
