@@ -74,7 +74,6 @@ class DBStorage:
                         ClassName = obj.__class__.__name__
                         keyName = ClassName + "." + str(obj.id)
                         result[keyName] = obj
-
         return result
 
     def search(self, cls, id):

@@ -73,13 +73,16 @@ def cities_by_states():
 @app.route('/states/<id>', strict_slashes=False)
 def states(id=None):
     """ Route function for /states and /states/<id> """
+    not_found = False
     if id is not None:
         states = storage.all(State, id)
         with_id = True
+        if len(states) == 0:
+            not_found = True
     else:
         states = storage.all(State)
         with_id = False
-    return render_template('9-states.html', states=states, with_id=with_id)
+    return render_template('9-states.html', states=states, with_id=with_id, not_found=not_found)
 
 
 if __name__ == "__main__":
