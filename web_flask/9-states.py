@@ -82,7 +82,8 @@ def states(id=None):
     else:
         states = storage.all(State)
         with_id = False
-    return render_template('9-states.html', states=states, with_id=with_id, not_found=not_found)
+    return render_template('9-states.html', states=states,
+                           with_id=with_id, not_found=not_found)
 
 
 if __name__ == "__main__":
