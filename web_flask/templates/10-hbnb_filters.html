@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AirBnB clone</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="static/styles/4-common.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/3-header.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/3-footer.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/6-filters.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/8-places.css">
+    <link rel="icon" href="static/images/icon.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <div class="logo"></div>
+    </header>
+    <div class="container">
+        <section class="filters">
+            <div class="locations">
+                <h3>States</h3>
+                <h4>&nbsp;</h4>
+
+                <ul class="popover">
+                    {% for state_id, state in states.items()|sort(attribute='1.name') %}
+                    <li><h2>{{ state.name }}:</h2></li>
+                        {% for city in state.cities|sort(attribute='name') %}
+                        <li>{{ city.name }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+
+
+            </div>
+            <div class="amenities">
+                <h3>Amenities</h3>
+                <h4>&nbsp;</h4>
+                <ul class="popover">
+                    {% for amenity_id, amenity in amenities.items()|sort(attribute='1.name') %}
+                    <li>{{ amenity.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <button>Search</button>
+        </section>
+
+    </div>
+    <footer>
+        Best School
+    </footer>
+</body>
+
+</html>
+
+
