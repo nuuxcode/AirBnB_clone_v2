@@ -9,7 +9,7 @@
 
     {% if with_id %}
     {% for state_id, state in states.items() %}
-    <H1>States: {{ state.name }}</H1>
+    <H1>State: {{ state.name }}</H1>
     {% endfor %}
     <H3>Cities:</H3>
     {% else %}
@@ -31,3 +31,10 @@
 </HTML>
 
 
+curl 0.0.0.0:5000/states ; echo ""
+
+
+d2398800-dd87-482b-be21-50a3063858ad
+
+
+curl 0.0.0.0:5000/states/d2398800-dd87-482b-be21-50a3063858ad ; echo ""
